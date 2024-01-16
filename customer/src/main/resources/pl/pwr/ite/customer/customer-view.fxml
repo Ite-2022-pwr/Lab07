@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1500.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.pwr.ite.customer.view.controller.CustomerController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0">
+        <Label text="Host: ">
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+        </Label>
+        <TextField fx:id="hostTextField" text="localhost">
+            <HBox.margin>
+                <Insets />
+            </HBox.margin>
+        </TextField>
+        <Label text="Port: ">
+            <HBox.margin>
+                <Insets left="10.0" />
+            </HBox.margin>
+        </Label>
+        <TextField fx:id="portTextField" />
+        <Button fx:id="warehouseConnectButton" mnemonicParsing="false" onAction="#warehouseConnectButtonClick" text="Connect to warehouse">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <HBox.margin>
+                <Insets left="20.0" />
+            </HBox.margin>
+        </Button>
+    </HBox>
+      <TabPane fx:id="mainTabPane" prefHeight="674.0" prefWidth="1460.0" tabClosingPolicy="UNAVAILABLE">
+          <Tab onSelectionChanged="#offersTabClicked" text="Products">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="960.0">
+             <BorderPane fx:id="mainBorderPane" prefHeight="814.0" prefWidth="1460.0">
+                 <right>
+                   <VBox prefHeight="200.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="selectedProductsLabel" text="Selected products: 0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="placeOrderButton" mnemonicParsing="false" onAction="#placeOrderButtonClick" text="Order">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                 </right>
+               <center>
+                        <TableView fx:id="productTable" onMouseClicked="#tableCellSelected" prefHeight="630.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+                            <columns>
+                                <TableColumn prefWidth="75.0" text="C1" />
+                                <TableColumn prefWidth="75.0" text="C2" />
+                            </columns>
+      <!--                      <columnResizePolicy>-->
+      <!--                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />-->
+      <!--                      </columnResizePolicy>-->
+                        </TableView>
+               </center>
+             </BorderPane>
+              </AnchorPane>
+          </Tab>
+          <Tab onSelectionChanged="#offersTabClicked" text="My orders">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <HBox prefHeight="645.0" prefWidth="1460.0">
+                  <children>
+                     <TableView fx:id="orderProductsTable" prefHeight="645.0" prefWidth="314.0">
+                       <columns>
+                         <TableColumn prefWidth="75.0" text="ID" />
+                         <TableColumn prefWidth="75.0" text="Name" />
+                       </columns>
+                       <columnResizePolicy>
+                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                       </columnResizePolicy>
+                     </TableView>
+                     <Button fx:id="returnButton" mnemonicParsing="false" onAction="#returnButtonClick" text="Return all" />
+                     <Button fx:id="payButton" mnemonicParsing="false" onAction="#payButtonClick" text="Pay for order" />
+                     <Button mnemonicParsing="false" onAction="#returnProductButtonClick" text="Return product" />
+                     <Button mnemonicParsing="false" onAction="#buyProductButtonClick" text="Buy product" />
+                  </children>
+               </HBox>
+            </children>
+         </AnchorPane>
+          </Tab>
+      </TabPane>
+</VBox>
