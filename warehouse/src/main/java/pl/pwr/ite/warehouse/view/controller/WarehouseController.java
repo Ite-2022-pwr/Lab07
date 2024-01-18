@@ -1,4 +1,4 @@
-package pl.pwr.ite.warehouse;
+package pl.pwr.ite.warehouse.view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

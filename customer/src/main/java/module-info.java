@@ -9,8 +9,8 @@ module pl.pwr.ite.customer {
 
 
     opens pl.pwr.ite.customer to javafx.fxml;
-    exports pl.pwr.ite.customer;
-    exports pl.pwr.ite.customer.service;
+//    exports pl.pwr.ite.customer;
+//    exports pl.pwr.ite.customer.service;
     exports pl.pwr.ite.customer.view.controller;
     opens pl.pwr.ite.customer.view.controller to javafx.fxml;
 }

@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.pwr.ite.customer.view.controller.CustomerController;
-import pl.pwr.ite.service.javafx.CommunicationController;
 
 import java.io.IOException;
 

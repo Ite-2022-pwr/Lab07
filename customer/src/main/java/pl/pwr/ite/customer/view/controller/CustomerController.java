@@ -134,9 +134,11 @@ public class CustomerController implements Initializable {
             }
             iterator.remove();
         }
-        Registry registry = LocateRegistry.getRegistry();
-        var sellerServer = (ISeller) registry.lookup("SellerServer");
-        sellerServer.acceptOrder(customerClient, itemsToBuy, itemsToReturn);
+        var sellers = keeperServer.getSellers();
+        if(sellers.isEmpty()) {
+            throw new JavaFXException("No sellers available at the moment :(");
+        }
+        sellers.get(0).acceptOrder(customerClient, itemsToBuy, itemsToReturn);
         offersTabClicked(null);
     }
 

@@ -60,6 +60,12 @@ public class Main {
                     if (item.getDescription().equals(o.getDescription()))
                         o.setQuantity(Integer.max(0,o.getQuantity() - item.getQuantity()));
         }
+
+        @Override
+        public List<ISeller> getSellers() throws RemoteException {
+            return null;
+        }
+
         @Override
         public void getOrder(int i) throws RemoteException {
             System.out.println("Keeper received gerOrder query");

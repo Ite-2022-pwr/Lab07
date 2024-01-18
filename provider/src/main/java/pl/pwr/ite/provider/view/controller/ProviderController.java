@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pl.pwr.ite.model.Order;
 import pl.pwr.ite.model.enums.OrderStatus;
-import pl.pwr.ite.service.remote.client.CustomerClient;
 import pl.pwr.ite.service.rmi.RmiDeliverer;
 import pl.pwr.ite.shop.api.*;
 

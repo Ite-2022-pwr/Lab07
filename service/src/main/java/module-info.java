@@ -7,8 +7,8 @@ module service {
     requires java.rmi;
     requires shop;
     exports pl.pwr.ite.service;
-    exports pl.pwr.ite.service.remote;
-    exports pl.pwr.ite.service.remote.client;
-    exports pl.pwr.ite.service.javafx;
+//    exports pl.pwr.ite.service.remote;
+//    exports pl.pwr.ite.service.remote.client;
+//    exports pl.pwr.ite.service.javafx;
     exports pl.pwr.ite.service.rmi;
 }

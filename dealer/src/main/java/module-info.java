@@ -8,7 +8,7 @@ module pl.pwr.ite.dealer {
 
     opens pl.pwr.ite.dealer to javafx.fxml;
     exports pl.pwr.ite.dealer;
-    exports pl.pwr.ite.dealer.service;
+//    exports pl.pwr.ite.dealer.service;
     exports pl.pwr.ite.dealer.view.controller;
     opens pl.pwr.ite.dealer.view.controller to javafx.fxml;
 }

@@ -3,15 +3,13 @@ package pl.pwr.ite.service.rmi;
 import pl.pwr.ite.model.Order;
 import pl.pwr.ite.service.ItemRepository;
 import pl.pwr.ite.service.OrderRepository;
-import pl.pwr.ite.shop.api.ICallback;
-import pl.pwr.ite.shop.api.ICustomer;
-import pl.pwr.ite.shop.api.IKeeper;
-import pl.pwr.ite.shop.api.Item;
+import pl.pwr.ite.shop.api.*;
 
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RmiKeeper implements IKeeper {
 
@@ -43,6 +41,15 @@ public class RmiKeeper implements IKeeper {
     public void getOffer(int userId) throws RemoteException {
         var callback = (ICustomer) registeredClients.get(userId);
         callback.response(null, itemRepository.getAll());
+    }
+
+    @Override
+    public List<ISeller> getSellers() throws RemoteException {
+        return registeredClients.values()
+                .stream()
+                .filter(rc -> rc instanceof ISeller)
+                .map(rc -> (ISeller) rc)
+                .collect(Collectors.toList());
     }
 
     @Override

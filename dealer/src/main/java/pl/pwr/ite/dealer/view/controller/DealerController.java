@@ -29,7 +29,7 @@ public class DealerController {
     public void acceptOrderCallback(ICustomer customer, List<Item> boughtItems, List<Item> returnedItems) {
         try {
             keeperServer.returnOrder(returnedItems);
-            customer.returnReceipt("Bought items: " + boughtItems.size() + "Money to pay: " + new Random().nextInt(9, 30) * boughtItems.size());
+            customer.returnReceipt("Bought items: " + boughtItems.size() + " Money to pay: " + new Random().nextInt(9, 30) * boughtItems.size());
         } catch (RemoteException ex) {
             ex.printStackTrace();
         }
@@ -39,7 +39,6 @@ public class DealerController {
         Registry registry = LocateRegistry.getRegistry();
         this.keeperServer = (IKeeper) registry.lookup("KeeperServer");
         keeperServer.register(sellerClient);
-        registry.rebind("SellerServer", sellerClient);
         ((RmiSeller) sellerClient).setAcceptOrderCallback(this::acceptOrderCallback);
         warehouseConnectButton.setDisable(true);
     }
