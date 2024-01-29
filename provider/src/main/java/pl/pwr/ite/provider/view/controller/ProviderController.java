@@ -3,10 +3,11 @@ package pl.pwr.ite.provider.view.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pl.pwr.ite.model.Order;
-import pl.pwr.ite.model.enums.OrderStatus;
 import pl.pwr.ite.service.rmi.RmiDeliverer;
 import pl.pwr.ite.shop.api.*;
 

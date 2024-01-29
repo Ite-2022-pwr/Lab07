@@ -13,7 +13,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-public class RmiDeliverer extends UnicastRemoteObject implements IDeliverer, Serializable {
+public class RmiDeliverer extends UnicastRemoteObject implements IDeliverer {
 
     @Setter
     private Consumer<List<Item>> returnOrderCallback;

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class RmiCustomer extends UnicastRemoteObject implements ICustomer, Serializable {
+public class RmiCustomer extends UnicastRemoteObject implements ICustomer {
 
     @Setter
     private BiConsumer<ICallback, List<Item>> putOrderCallback;

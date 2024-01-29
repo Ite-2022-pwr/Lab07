@@ -13,7 +13,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class RmiSeller extends UnicastRemoteObject implements ISeller, Serializable {
+public class RmiSeller extends UnicastRemoteObject implements ISeller {
 
     @Setter
     private TriConsumer<ICustomer, List<Item>, List<Item>> acceptOrderCallback;

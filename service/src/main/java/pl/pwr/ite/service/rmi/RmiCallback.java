@@ -14,6 +14,6 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
-public abstract class RmiCallback implements ICallback, Serializable {
+public abstract class RmiCallback implements ICallback {
 
 }

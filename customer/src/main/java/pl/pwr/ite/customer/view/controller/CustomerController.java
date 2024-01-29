@@ -23,7 +23,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CustomerController implements Initializable {
-    @FXML private Button payButton;
     @FXML private Label selectedProductsLabel;
     @FXML private TableView<Item> productTable;
     @FXML private TextField portTextField;
@@ -31,13 +30,12 @@ public class CustomerController implements Initializable {
     @FXML private Button warehouseConnectButton;
     @FXML private TabPane mainTabPane;
     @FXML private TableView<OrderItem> orderProductsTable;
-    @FXML private Button returnButton;
 
     private IKeeper keeperServer;
     private final ICustomer customerClient = new RmiCustomer();
     private Integer customerId;
     private final List<OrderItem> localItems = new ArrayList<>();
-
+    private final List<IDeliverer> deliverersHistory = new ArrayList<>();
 
     public CustomerController() throws RemoteException {
     }
@@ -72,7 +70,8 @@ public class CustomerController implements Initializable {
     }
 
     public void putOrderCallback(ICallback callback, List<Item> items) {
-        localItems.addAll(items.stream().map(i -> new OrderItem(i.getDescription(), i.getQuantity(), "Delivered")).collect(Collectors.toList()));
+        localItems.addAll(items.stream().map(i -> new OrderItem(i.getDescription(), i.getQuantity(), "Delivered")).toList());
+        deliverersHistory.add((IDeliverer) callback);
         offersTabClicked(null);
     }
 
@@ -81,7 +80,11 @@ public class CustomerController implements Initializable {
             return;
         }
         var itemsToReturn = localItems.stream().map(li -> new Item(li.getDescription(), li.getQuantity())).collect(Collectors.toList());
-        keeperServer.returnOrder(itemsToReturn);
+        var deliverer = deliverersHistory.get(0);
+        if(deliverer == null) {
+            throw new JavaFXException("No deliver available at the moment.");
+        }
+        deliverer.returnOrder(itemsToReturn);
         localItems.clear();
         offersTabClicked(null);
     }

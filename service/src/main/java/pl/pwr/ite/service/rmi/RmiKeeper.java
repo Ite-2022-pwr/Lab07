@@ -6,6 +6,7 @@ import pl.pwr.ite.service.OrderRepository;
 import pl.pwr.ite.shop.api.*;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
